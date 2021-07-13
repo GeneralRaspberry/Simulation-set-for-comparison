@@ -338,6 +338,18 @@ ggplot(avg.sur2,aes(x=q))+geom_histogram(color="black",fill="lightblue",aes(y=..
 absdif<-abs(anq-sum.q)
 reldif<-absdif/sum.q 
 
-Figure2<-data.frame(sum.q,anq,mean_r)
+#################################Calculating 95% confidence limits#########################################
+sum.q #mean discovery prevalence for simulations 
+sd95<-sd(avg.sur2$q) #standard deviation of simulations
+sample95<-sqrt(1000) #sample size for simulations
+zvalue95<-1.96 #selected confidence interval
+
+perct2.5<-zvalue95*sd95/sample95
+Upper<-sum.q+perct2.5
+Lower<-sum.q-perct2.5
+
+######################################creating a data table from all the simulations#######################
+
+Figure2<-data.frame(sum.q,Upper,Lower,anq,mean_r)
 
 
