@@ -338,4 +338,6 @@ ggplot(avg.sur2,aes(x=q))+geom_histogram(color="black",fill="lightblue",aes(y=..
 absdif<-abs(anq-sum.q)
 reldif<-absdif/sum.q 
 
+Figure2<-data.frame(sum.q,anq,mean_r)
+
 
