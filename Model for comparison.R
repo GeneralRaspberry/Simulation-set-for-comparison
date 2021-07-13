@@ -348,8 +348,20 @@ perct2.5<-zvalue95*sd95/sample95
 Upper<-sum.q+perct2.5
 Lower<-sum.q-perct2.5
 
+##########################Adding the cluster metric#######################################################
+
+kk<-Kest(landscape)
+plot(kk)
+kk_iso<-kk$iso
+kk_pois<-kk$theo
+
+kk_div_na<-kk_iso/kk_pois
+kk_div_0<-replace_na(kk_div_na,0)
+kk_mean<-round(mean(kk_div_0),3)
+
 ######################################creating a data table from all the simulations#######################
 
 Figure2<-data.frame(sum.q,Upper,Lower,anq,mean_r)
+Figure2namefile
 
 
