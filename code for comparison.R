@@ -1,5 +1,7 @@
 library(tidyr)
 
+t2<- proc.time()
+
 df<-data
 res<-NULL
 for (sim in unique(df$sim)){ ## looping over simulations
@@ -83,3 +85,7 @@ Lowerme<-MetricAveragefinal-perct2.5me
 Figure2<-data.frame(theta,beta,randmod,sum.q,Upper,Lower,anq,mean_r,absdif,reldif,MetricAveragefinal,Upperme,Lowerme)
 Figure2namefile<-paste0("b=",beta," l=",randmod," t=",theta, "r=", mean_rsave, "comparisondata", ".Rda")
 save(Figure2,file=Figure2namefile)
+proc.end<-proc.time()-t2
+proc.end
+beep()
+beep()
