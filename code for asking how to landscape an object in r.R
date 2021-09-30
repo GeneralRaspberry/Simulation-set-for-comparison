@@ -12,8 +12,12 @@ coordinates<-data.frame(x,y,sim)
 coordinates<-coordinates[order(sim),]
 
 emptylist<-vector(mode="list",length=10)
-metriccalculation<-function(){
-  emptylist<-ppp(x,y,owin(xrange=c(0,1000),yrange=c(0,1000)))
+metriccalculation<-function(x,y,r){
+  r<-(ppp(x,y,owin(xrange=c(0,1000),yrange=c(0,1000))))
 }
 
-coordinates%>%group_by(sim)%>%lapply(coordinates,function(x)metriccalculation(data$x,data$y))
+coordinates%>%group_by(sim)%>%apply(coordinates,metriccalculation,x=coordinates$x,y=coordinates$y,r=emptylist)
+
+
+
+
