@@ -11,13 +11,8 @@ coordinates<-data.frame(x,y,sim)
 
 coordinates<-coordinates[order(sim),]
 
-emptylist<-vector(mode="list",length=10)
-metriccalculation<-function(x,y,r){
-  r<-(ppp(x,y,owin(xrange=c(0,1000),yrange=c(0,1000))))
-}
-
-coordinates%>%group_by(sim)%>%apply(coordinates,metriccalculation,x=coordinates$x,y=coordinates$y,r=emptylist)
-
+coord_list<-split(coordinates[,c("x","y")],coordinates$sim)
+ppplist<-lapply(coord_list,as.ppp,W=square(1000))
 
 
 
