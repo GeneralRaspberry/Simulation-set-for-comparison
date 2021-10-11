@@ -1,9 +1,6 @@
 #########initial set up################################
 
-x<-Figure2
-y<-rbind(Figure2,x)
-
-##############binding onto existing dataframe##############
+y<-Figure2
 y<-rbind(y,Figure2)
 
 ##################rename if needed#########################
