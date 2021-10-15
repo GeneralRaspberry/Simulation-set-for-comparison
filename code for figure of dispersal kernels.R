@@ -24,11 +24,24 @@ masterdf<-rbind(dataframe1,dataframeb.4)
 
 library(tidyverse)
 
+b<-.7
+for(y in distance){
+  disperse<-enginefordispersal(beta,b,theta,distance)
+}
+
+dataframe.7<-data.frame(disperse,distance,b,theta,beta)
+
+masterdf<-rbind(masterdf,dataframe.7)
+
 b<-.5
 mdd.5<-theta*gamma(3/b)/gamma(2/b)
 
 b<-1
 mdd1<-theta*gamma(3/b)/gamma(2/b)
+
+b<-.7
+mdd.7<-theta*gamma(3/b)/gamma(2/b)
+
 
 
 Freshtitle<-paste0("\u03b8 = ", theta, " \u03b2 =", beta)
@@ -40,6 +53,7 @@ ggplot(masterdf,aes(x=distance,
   geom_line()+
   geom_vline(xintercept=mdd1, linetype="dashed", color="blue", size=.5)+
   geom_vline(xintercept=mdd.5, linetype="dashed", color="red", size=.5)+
+  geom_vline(xintercept=mdd.7, linetype="dashed", color="green", size=.5)+
   xlab("Distance (m)")+ylab("P(dispersal)")+labs(color="Shape Factor")+
   ggtitle(Freshtitle)
   
@@ -51,6 +65,7 @@ plot1<-ggplot(masterdf,aes(x=distance,
   geom_line()+
   geom_vline(xintercept=mdd1, linetype="dashed", color="blue", size=.5)+
   geom_vline(xintercept=mdd.5, linetype="dashed", color="red", size=.5)+
+  geom_vline(xintercept=mdd.7, linetype="dashed", color="green", size=.5)+
   xlab("Distance (m)")+ylab("P(dispersal)")+labs(color="Shape Factor")+
   ggtitle(Freshtitle)
 
