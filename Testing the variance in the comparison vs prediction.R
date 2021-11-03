@@ -60,10 +60,23 @@ datacom<-c(datacom,relcom)
 print(sampleprev)
 }
 
-ggplot()+geom_point(aes(x=iseq,y=datacom))+xlab("Number of Simulations")+ylab("Relative Difference")
+titlehusk<-paste("\u03b2 =", beta, "\u03f4 =", theta, "Rm =", randmod)
 
-ggplotrelcomfigure<-ggplot()+geom_point(aes(x=iseq,y=datacom))+
+ggplot()+geom_point(aes(x=iseq,y=datacom))+xlab("Number of Simulations")+
+  ylab("Relative Difference")+
+  ggtitle(titlehusk)
+  
+
+titlehusk<-ggplot()+geom_point(aes(x=iseq,y=datacom))+
 xlab("Number of Simulations")+
-ylab("Relative Difference")
+ylab("Relative Difference")+
+  ggtitle(titlehusk)
 
-ggsave(file="ggplotrelcomfigure3.png", plot=ggplotrelcomfigure)
+ggtitlesave<-paste("beta =",beta,"theta =",theta,"Rm =",randmod,"simcountplot.png")
+
+ggsave(file=ggtitlesave, plot=titlehusk)
+
+
+#################faceting######################################
+
+ggarrange(p,s,labels=c("a","b"),ncol=1,nrow=2)
